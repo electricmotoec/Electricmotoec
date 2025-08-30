@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Moto EC - ¡Bienvenido!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #e5e7eb;
+            background-color: #111827;
+            background-image: linear-gradient(to bottom, #1f2937, #111827);
+        }
+        .container-padding {
+            padding: 2rem;
+        }
+        @media (min-width: 640px) {
+            .container-padding {
+                padding: 4rem;
+            }
+        }
+        .carousel-item {
+            display: none;
+        }
+        .carousel-item.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-100 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="#" class="text-2xl font-bold text-gray-800">
+                <img src="logoelectricmotoec.png" alt="Electric Moto EC Logo" class="h-10 inline-block mr-2" />
+                Electric Moto EC
+            </a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-300">Nosotros</a>
+                <a href="#products" class="text-gray-600 hover:text-indigo-600 transition duration-300">Productos</a>
+                <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition duration-300">Contáctanos</a>
+            </nav>
+            <button id="menu-btn" class="md:hidden text-gray-800 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full bg-gray-100 shadow-lg py-4 transition-all duration-300">
+            <nav class="flex flex-col items-center space-y-4">
+                <a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-300">Nosotros</a>
+                <a href="#products" class="text-gray-600 hover:text-indigo-600 transition duration-300">Productos</a>
+                <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition duration-300">Contáctanos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="py-16 md:py-24 text-center bg-transparent">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
+                    Bienvenido a <span class="text-indigo-400">Electric Moto EC</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Tu destino para las mejores motos y scooters eléctricas en Ecuador.
+                </p>
+                <a href="https://wa.me/593958649425" target="_blank" class="inline-block px-8 py-4 bg-green-600 text-white font-bold rounded-full shadow-lg hover:bg-green-700 transition duration-300 transform hover:scale-105">
+                    Chatear en WhatsApp
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="bg-gray-800 py-16 md:py-24 container-padding rounded-lg mx-4 md:mx-auto">
+            <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Image Carousel -->
+                <div class="relative w-full overflow-hidden rounded-lg shadow-xl" style="height: 300px;">
+                    <div id="carousel" class="absolute inset-0 flex transition-transform duration-700 ease-in-out">
+                        <!-- Por favor, asegúrate de que los nombres de archivo y sus ubicaciones sean correctos. -->
+                        <div class="carousel-item active flex-shrink-0 w-full">
+                            <img src="manmoto1.jpg" alt="Hombre montando una moto eléctrica" class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-full">
+                            <img src="manmoto2.jpg" alt="Hombre posando con una moto eléctrica" class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-full">
+                            <img src="manmoto3.jpg" alt="Hombre sonriendo en una moto eléctrica" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Nuestra Misión</h2>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        Nuestra misión es proveer a nuestros clientes con las mejores motocicletas eléctricas, garantizando su seguridad mientras contribuimos a un futuro más limpio para el planeta.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Nuestra visión es liderar el mercado de la movilidad eléctrica en Ecuador, ofreciendo productos de alta calidad y un servicio excepcional que inspire a más personas a adoptar un estilo de vida ecológico.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section (Gallery) -->
+        <section id="products" class="py-16 md:py-24 container-padding">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Nuestros Productos</h2>
+                <p class="text-gray-300 mb-12 max-w-2xl mx-auto">
+                    Explora nuestra gama de motos y scooters eléctricas de alta calidad.
+                </p>
+                <!-- Grid layout for product images -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                    <!-- Product Image 1 -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <img src="1.jpg" alt="Producto 1" class="rounded-md w-full h-auto object-cover mb-4">
+                    </div>
+                    <!-- Product Image 2 -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <img src="2.jpg" alt="Producto 2" class="rounded-md w-full h-auto object-cover mb-4">
+                    </div>
+                    <!-- Product Image 3 -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <img src="3.jpg" alt="Producto 3" class="rounded-md w-full h-auto object-cover mb-4">
+                    </div>
+                    <!-- Product Image 4 -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <img src="4.jpg" alt="Producto 4" class="rounded-md w-full h-auto object-cover mb-4">
+                    </div>
+                    <!-- Product Image 5 -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <img src="5.jpg" alt="Producto 5" class="rounded-md w-full h-auto object-cover mb-4">
+                    </div>
+                    <!-- Product Image 6 - Accesorios -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <img src="Heading.jpg" alt="Accesorios de Electric Moto EC" class="rounded-md w-full h-auto object-cover mb-4">
+                        <div class="text-center font-bold text-white mt-2">Accesorios</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-gray-900 text-white py-16 md:py-24 container-padding rounded-lg mx-4 md:mx-auto">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contáctanos</h2>
+                <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+                    ¿Listo para empezar? Contáctanos directamente por WhatsApp o correo electrónico, o visítanos en nuestra ubicación.
+                </p>
+                <div class="space-y-4">
+                    <p class="flex items-center justify-center text-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 mr-2 text-green-500" viewBox="0 0 16 16">
+                            <path d="M13.633 1.836A7.9 7.9 0 0 0 8.001 0a7.9 7.9 0 0 0-5.632 2.373A7.9 7.9 0 0 0 0 7.999c0 1.25.32 2.455.932 3.52l-.93 3.52 3.632-.976A7.9 7.9 0 0 0 8.001 16a7.9 7.9 0 0 0 5.632-2.373A7.9 7.9 0 0 0 16 7.999a7.9 7.9 0 0 0-2.367-5.631zM8.001 1.5a6.5 6.5 0 0 1 4.5 1.867 6.5 6.5 0 0 1 1.867 4.5 6.5 6.5 0 0 1-1.867 4.5 6.5 6.5 0 0 1-4.5 1.867 6.5 6.5 0 0 1-4.5-1.867 6.5 6.5 0 0 1-1.867-4.5 6.5 6.5 0 0 1 1.867-4.5A6.5 6.5 0 0 1 8.001 1.5z"/>
+                            <path d="M11.667 9.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1zm-2.5 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1zm-2.5 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1z"/>
+                        </svg>
+                        <a href="https://wa.me/593958649425" target="_blank" class="hover:underline">WhatsApp: 593958649425</a>
+                    </p>
+                    <p class="flex items-center justify-center text-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 mr-2 text-red-500" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.04A2 2 0 0 0 2 14h12a2 2 0 0 0 2-2.262V4.697l-5.803 3.54L8 10.435.05 3.555z"/>
+                        </svg>
+                        <a href="mailto:electromotoec@gmail.com" class="hover:underline">Correo: electricmotoec@gmail.com</a>
+                    </p>
+                    <p class="flex items-start justify-center text-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 mr-2 text-blue-500 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span class="text-center">Dirección: Almax 3 Km 14.5 Vía a Samborondón, Samborondón 092304</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-white py-8 text-center">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2023 Electric Moto EC. Todos los derechos reservados.</p>
+            <p class="mt-2 text-sm text-gray-400">Diseñado y desarrollado por Your Name.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for mobile menu toggle and carousel -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            const carousel = document.getElementById('carousel');
+            const carouselItems = Array.from(carousel.children);
+            let currentIndex = 0;
+
+            const showNextImage = () => {
+                carouselItems[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % carouselItems.length;
+                carouselItems[currentIndex].classList.add('active');
+            };
+
+            // Initial state: show the first image
+            carouselItems[currentIndex].classList.add('active');
+
+            // Set up automatic slideshow
+            setInterval(showNextImage, 4000); // Change image every 4 seconds
+        });
+    </script>
+</body>
+</html>
