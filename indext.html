@@ -21,6 +21,12 @@
                 padding: 4rem;
             }
         }
+        .carousel-item {
+            display: none;
+        }
+        .carousel-item.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -72,15 +78,18 @@
         <!-- About Section -->
         <section id="about" class="bg-gray-800 py-16 md:py-24 container-padding rounded-lg mx-4 md:mx-auto">
             <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <!-- Image Generation Block moved here -->
-                <div id="hero-image-container" class="flex justify-center items-center">
-                    <img id="hero-image" class="rounded-lg shadow-xl" style="display:none;" />
-                    <div id="loading-spinner" class="flex flex-col items-center justify-center text-gray-500">
-                        <svg class="animate-spin -ml-1 mr-3 h-10 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        <span>Generando imagen...</span>
+                <!-- Image Carousel -->
+                <div class="relative w-full overflow-hidden rounded-lg shadow-xl" style="height: 300px;">
+                    <div id="carousel" class="absolute inset-0 flex transition-transform duration-700 ease-in-out">
+                        <div class="carousel-item active flex-shrink-0 w-full">
+                            <img src="manmoto1.jpg" alt="Hombre montando una moto eléctrica" class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-full">
+                            <img src="manmoto2.jpg" alt="Hombre posando con una moto eléctrica" class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-full">
+                            <img src="manmoto3.jpg" alt="Hombre sonriendo en una moto eléctrica" class="w-full h-full object-cover">
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -172,14 +181,11 @@
         </div>
     </footer>
 
-    <!-- JavaScript for mobile menu toggle and image generation -->
+    <!-- JavaScript for mobile menu toggle and carousel -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            const heroImageContainer = document.getElementById('hero-image-container');
-            const heroImage = document.getElementById('hero-image');
-            const loadingSpinner = document.getElementById('loading-spinner');
 
             menuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
@@ -191,60 +197,21 @@
                 });
             });
 
-            // Function to generate and display the image
-            const generateImage = async () => {
-                const payload = {
-                    instances: {
-                        prompt: "Un hombre joven latinoamericano sonriendo mientras monta un scooter eléctrico moderno. El scooter es de color amarillo brillante. La ropa del hombre es de color neutro y casual. El logo de Electric Moto EC es visible en el vehículo. El hombre mira hacia la derecha. El fondo es un paisaje urbano futurista con elementos de energía limpia. La imagen debe tener un estilo fotográfico, dinámico y moderno.",
-                    },
-                    parameters: {
-                        "sampleCount": 1
-                    }
-                };
+            const carousel = document.getElementById('carousel');
+            const carouselItems = Array.from(carousel.children);
+            let currentIndex = 0;
 
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
-
-                let retries = 0;
-                const maxRetries = 5;
-                const baseDelay = 1000;
-
-                while (retries < maxRetries) {
-                    try {
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-
-                        const result = await response.json();
-                        const base64Data = result?.predictions?.[0]?.bytesBase64Encoded;
-
-                        if (base64Data) {
-                            const imageUrl = `data:image/png;base64,${base64Data}`;
-                            heroImage.src = imageUrl;
-                            loadingSpinner.style.display = 'none';
-                            heroImage.style.display = 'block';
-                            return;
-                        } else {
-                            throw new Error("Invalid response format from API");
-                        }
-                    } catch (error) {
-                        console.error('Error generating image:', error);
-                        retries++;
-                        const delay = baseDelay * Math.pow(2, retries);
-                        await new Promise(res => setTimeout(res, delay));
-                    }
-                }
-                loadingSpinner.innerHTML = '<span>Error al generar la imagen.</span>';
-                loadingSpinner.classList.add('text-red-500');
+            const showNextImage = () => {
+                carouselItems[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % carouselItems.length;
+                carouselItems[currentIndex].classList.add('active');
             };
 
-            generateImage();
+            // Initial state: show the first image
+            carouselItems[currentIndex].classList.add('active');
+
+            // Set up automatic slideshow
+            setInterval(showNextImage, 4000); // Change image every 4 seconds
         });
     </script>
 </body>
